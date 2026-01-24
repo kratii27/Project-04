@@ -18,7 +18,6 @@
 	<br>
 	<h1 align="center">
 		<font size="10px" color="navy">Welcome to ORS</font>
-<font size="5px" color="navy">23rd Dec 2025</font>
 	</h1>
 
 	<%

@@ -178,7 +178,7 @@ public class UserRegistrationCtl extends BaseCtl {
         if (OP_SIGN_UP.equalsIgnoreCase(op)) {
             UserBean bean = (UserBean) populateBean(request);
             try {
-                long pk = model.registerUser(bean);
+                long pk = model.add(bean);
                 ServletUtility.setBean(bean, request);
                 ServletUtility.setSuccessMessage("Registration successful!", request);
             } catch (DuplicateRecordException e) {

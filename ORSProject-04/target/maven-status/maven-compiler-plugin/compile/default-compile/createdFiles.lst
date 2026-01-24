@@ -11,6 +11,7 @@ in\co\rays\proj4\controller\UserListCtl.class
 in\co\rays\proj4\bean\FacultyBean.class
 in\co\rays\proj4\controller\CourseCtl.class
 in\co\rays\proj4\bean\SubjectBean.class
+in\co\rays\proj4\controller\HostelCtl.class
 in\co\rays\proj4\util\DataValidator.class
 in\co\rays\proj4\model\TimetableModel.class
 in\co\rays\proj4\bean\MarksheetBean.class
@@ -48,6 +49,7 @@ in\co\rays\proj4\controller\RoleCtl.class
 in\co\rays\proj4\controller\StudentCtl.class
 in\co\rays\proj4\bean\UserBean.class
 in\co\rays\proj4\controller\MarksheetCtl.class
+in\co\rays\proj4\controller\HostelListCtl.class
 in\co\rays\proj4\controller\ForgetPasswordCtl.class
 in\co\rays\proj4\model\CourseModel.class
 in\co\rays\proj4\controller\TimetableCtl.class

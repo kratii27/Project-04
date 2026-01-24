@@ -1,6 +1,7 @@
 package in.co.rays.proj4.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -29,190 +30,190 @@ import in.co.rays.proj4.util.ServletUtility;
  */
 @WebServlet(name = "UserListCtl", urlPatterns = { "/ctl/UserListCtl" })
 public class UserListCtl extends BaseCtl {
-	
+
 	private static Logger log = Logger.getLogger(UserListCtl.class);
 
-    /**
-     * Loads preload lists such as Role list to populate dropdown filters.
-     *
-     * @param request the HttpServletRequest
-     */
-    @Override
-    protected void preload(HttpServletRequest request) {
-    	
-    	log.debug("UserListCtl Method preload started");
-    	
-        RoleModel rolemodel = new RoleModel();
+	/**
+	 * Loads preload lists such as Role list to populate dropdown filters.
+	 *
+	 * @param request the HttpServletRequest
+	 */
+	@Override
+	protected void preload(HttpServletRequest request) {
 
-        try {
-            List roleList = rolemodel.list();
-            request.setAttribute("roleList", roleList);
-        } catch (ApplicationException e) {
-            e.printStackTrace();
-        }
+		log.debug("UserListCtl Method preload started");
 
-        log.debug("UserListCtl Method preload ended");
-    }
+		RoleModel rolemodel = new RoleModel();
 
-    /**
-     * Populates a UserBean with request parameters for search filters.
-     *
-     * @param request the HttpServletRequest
-     * @return populated UserBean
-     */
-    @Override
-    protected BaseBean populateBean(HttpServletRequest request) {
-    	
-    	log.debug("UserListCtl Method populate started");
+		try {
+			List roleList = rolemodel.list();
+			request.setAttribute("roleList", roleList);
+		} catch (ApplicationException e) {
+			request.setAttribute("rolelist", new ArrayList<>());
+		}
 
-        UserBean bean = new UserBean();
+		log.debug("UserListCtl Method preload ended");
+	}
 
-        bean.setFirstName(DataUtility.getString(request.getParameter("firstName")));
-        bean.setLogin(DataUtility.getString(request.getParameter("login")));
-        bean.setRoleId(DataUtility.getLong(request.getParameter("roleId")));
-        bean.setDob(DataUtility.getDate(request.getParameter("dob")));
+	/**
+	 * Populates a UserBean with request parameters for search filters.
+	 *
+	 * @param request the HttpServletRequest
+	 * @return populated UserBean
+	 */
+	@Override
+	protected BaseBean populateBean(HttpServletRequest request) {
 
-        log.debug("UserListCtl Method populate ended");
-        return bean;
-    }
+		log.debug("UserListCtl Method populate started");
 
-    /**
-     * Handles GET request to display the initial User list with pagination.
-     *
-     * @param request the HttpServletRequest
-     * @param response the HttpServletResponse
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-    	
-    	log.debug("UserListCtl Method doGet started");
+		UserBean bean = new UserBean();
 
-        int pageNo = 1;
-        int pageSize = DataUtility.getInt(PropertyReader.getValue("page.size"));
+		bean.setFirstName(DataUtility.getString(request.getParameter("firstName")));
+		bean.setLogin(DataUtility.getString(request.getParameter("login")));
+		bean.setRoleId(DataUtility.getLong(request.getParameter("roleId")));
+		bean.setDob(DataUtility.getDate(request.getParameter("dob")));
 
-        UserBean bean = (UserBean) populateBean(request);
-        UserModel model = new UserModel();
+		log.debug("UserListCtl Method populate ended");
+		return bean;
+	}
 
-        try {
-            List<UserBean> list = model.search(bean, pageNo, pageSize);
-            List<UserBean> next = model.search(bean, pageNo + 1, pageSize);
+	/**
+	 * Handles GET request to display the initial User list with pagination.
+	 *
+	 * @param request  the HttpServletRequest
+	 * @param response the HttpServletResponse
+	 */
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-            if (list == null || list.isEmpty()) {
-                ServletUtility.setErrorMessage("no record found", request);
-            }
+		log.debug("UserListCtl Method doGet started");
 
-            ServletUtility.setList(list, request);
-            ServletUtility.setPageNo(pageNo, request);
-            ServletUtility.setPageSize(pageSize, request);
-            ServletUtility.setBean(bean, request);
-            request.setAttribute("nextListSize", next.size());
+		int pageNo = 1;
+		int pageSize = DataUtility.getInt(PropertyReader.getValue("page.size"));
 
-            ServletUtility.forward(getView(), request, response);
+		UserBean bean = (UserBean) populateBean(request);
+		UserModel model = new UserModel();
 
-        } catch (ApplicationException e) {
-            e.printStackTrace();
-            return;
-        }
-        log.debug("UserListCtl Method doGet ended");
-    }
+		try {
+			List<UserBean> list = model.search(bean, pageNo, pageSize);
+			List<UserBean> next = model.search(bean, pageNo + 1, pageSize);
 
-    /**
-     * Handles POST request for operations:
-     * Search, Next, Previous, New, Delete, Reset, Back.
-     *
-     * @param request the HttpServletRequest
-     * @param response the HttpServletResponse
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-    	
-    	log.debug("UserListCtl Method doPost started");
+			ServletUtility.setList(list, request);
+			ServletUtility.setBean(bean, request);
 
-        List list = null;
-        List next = null;
+			if (list == null || list.isEmpty()) {
+				ServletUtility.setErrorMessage("No record found", request);
+			}
 
-        int pageNo = DataUtility.getInt(request.getParameter("pageNo"));
-        int pageSize = DataUtility.getInt(request.getParameter("pageSize"));
+			int nextSize = (next == null) ? 0 : next.size();
+			request.setAttribute("nextListSize", nextSize);
+		} catch (ApplicationException e) {
+			ServletUtility.handleExceptionDBList(getView(), bean, pageNo, pageSize, request, response);
+		}
 
-        pageNo = (pageNo == 0) ? 1 : pageNo;
-        pageSize = (pageSize == 0) ? DataUtility.getInt(PropertyReader.getValue("page.size")) : pageSize;
+		ServletUtility.setPageNo(pageNo, request);
+		ServletUtility.setPageSize(pageSize, request);
+		ServletUtility.forward(getView(), request, response);
+		log.debug("UserListCtl Method doGet ended");
+	}
 
-        UserBean bean = (UserBean) populateBean(request);
-        UserModel model = new UserModel();
+	/**
+	 * Handles POST request for operations: Search, Next, Previous, New, Delete,
+	 * Reset, Back.
+	 *
+	 * @param request  the HttpServletRequest
+	 * @param response the HttpServletResponse
+	 */
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-        String op = DataUtility.getString(request.getParameter("operation"));
-        String[] ids = request.getParameterValues("ids");
+		log.debug("UserListCtl Method doPost started");
 
-        try {
+		List list = null;
+		List next = null;
 
-            if (OP_SEARCH.equalsIgnoreCase(op) || "Next".equalsIgnoreCase(op) || "Previous".equalsIgnoreCase(op)) {
+		int pageNo = DataUtility.getInt(request.getParameter("pageNo"));
+		int pageSize = DataUtility.getInt(request.getParameter("pageSize"));
 
-                if (OP_SEARCH.equalsIgnoreCase(op)) {
-                    pageNo = 1;
-                } else if (OP_NEXT.equalsIgnoreCase(op)) {
-                    pageNo++;
-                } else if (OP_PREVIOUS.equalsIgnoreCase(op) && pageNo > 1) {
-                    pageNo--;
-                }
+		pageNo = (pageNo == 0) ? 1 : pageNo;
+		pageSize = (pageSize == 0) ? DataUtility.getInt(PropertyReader.getValue("page.size")) : pageSize;
 
-            } else if (OP_NEW.equalsIgnoreCase(op)) {
-                ServletUtility.redirect(ORSView.USER_CTL, request, response);
-                return;
+		UserBean bean = (UserBean) populateBean(request);
+		UserModel model = new UserModel();
 
-            } else if (OP_DELETE.equalsIgnoreCase(op)) {
-                pageNo = 1;
-                if (ids != null && ids.length > 0) {
-                    UserBean deletebean = new UserBean();
-                    for (String id : ids) {
-                        deletebean.setId(DataUtility.getInt(id));
-                        model.delete(deletebean);
-                        ServletUtility.setSuccessMessage("User deleted successfully", request);
-                    }
-                } else {
-                    ServletUtility.setErrorMessage("Select at least one record", request);
-                }
+		String op = DataUtility.getString(request.getParameter("operation"));
+		String[] ids = request.getParameterValues("ids");
 
-            } else if (OP_RESET.equalsIgnoreCase(op)) {
-                ServletUtility.redirect(ORSView.USER_LIST_CTL, request, response);
-                return;
+		try {
 
-            } else if (OP_BACK.equalsIgnoreCase(op)) {
-                ServletUtility.redirect(ORSView.USER_LIST_CTL, request, response);
-                return;
-            }
+			if (OP_SEARCH.equalsIgnoreCase(op) || "Next".equalsIgnoreCase(op) || "Previous".equalsIgnoreCase(op)) {
 
-            list = model.search(bean, pageNo, pageSize);
-            next = model.search(bean, pageNo + 1, pageSize);
+				if (OP_SEARCH.equalsIgnoreCase(op)) {
+					pageNo = 1;
+				} else if (OP_NEXT.equalsIgnoreCase(op)) {
+					pageNo++;
+				} else if (OP_PREVIOUS.equalsIgnoreCase(op) && pageNo > 1) {
+					pageNo--;
+				}
 
-            if (list == null || list.size() == 0) {
-                ServletUtility.setErrorMessage("No record found ", request);
-            }
+			} else if (OP_NEW.equalsIgnoreCase(op)) {
+				ServletUtility.redirect(ORSView.USER_CTL, request, response);
+				return;
 
-            ServletUtility.setList(list, request);
-            ServletUtility.setPageNo(pageNo, request);
-            ServletUtility.setPageSize(pageSize, request);
-            ServletUtility.setBean(bean, request);
-            request.setAttribute("nextListSize", next.size());
+			} else if (OP_DELETE.equalsIgnoreCase(op)) {
+				pageNo = 1;
+				if (ids != null && ids.length > 0) {
+					UserBean deletebean = new UserBean();
+					for (String id : ids) {
+						deletebean.setId(DataUtility.getInt(id));
+						model.delete(deletebean);
+						ServletUtility.setSuccessMessage("User deleted successfully", request);
+					}
+				} else {
+					ServletUtility.setErrorMessage("Select at least one record", request);
+				}
 
-            ServletUtility.forward(getView(), request, response);
+			} else if (OP_RESET.equalsIgnoreCase(op)) {
+				ServletUtility.redirect(ORSView.USER_LIST_CTL, request, response);
+				return;
 
-        } catch (ApplicationException e) {
-            e.printStackTrace();
-            return;
-        }
-        
-        log.debug("UserListCtl Method doPost ended");
-    }
+			} else if (OP_BACK.equalsIgnoreCase(op)) {
+				ServletUtility.redirect(ORSView.USER_LIST_CTL, request, response);
+				return;
+			}
 
-    /**
-     * Returns the view for User List screen.
-     *
-     * @return USER_LIST_VIEW constant
-     */
-    @Override
-    protected String getView() {
-        return ORSView.USER_LIST_VIEW;
-    }
+			list = model.search(bean, pageNo, pageSize);
+			next = model.search(bean, pageNo + 1, pageSize);
+
+			if (list == null || list.size() == 0) {
+				ServletUtility.setErrorMessage("No record found ", request);
+			}
+
+			ServletUtility.setList(list, request);
+			ServletUtility.setPageNo(pageNo, request);
+			ServletUtility.setPageSize(pageSize, request);
+			ServletUtility.setBean(bean, request);
+			request.setAttribute("nextListSize", next.size());
+
+			ServletUtility.forward(getView(), request, response);
+
+		} catch (ApplicationException e) {
+			e.printStackTrace();
+			return;
+		}
+
+		log.debug("UserListCtl Method doPost ended");
+	}
+
+	/**
+	 * Returns the view for User List screen.
+	 *
+	 * @return USER_LIST_VIEW constant
+	 */
+	@Override
+	protected String getView() {
+		return ORSView.USER_LIST_VIEW;
+	}
 }

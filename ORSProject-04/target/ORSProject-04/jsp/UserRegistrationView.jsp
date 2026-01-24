@@ -9,9 +9,11 @@
 <title>User Registration</title>
 </head>
 <body>
+
+	<%@ include file="Header.jsp"%>
 	<form action="<%=ORSView.USER_REGISTRATION_CTL%>" method="post">
 
-		<%@ include file="Header.jsp"%>
+
 
 		<jsp:useBean id="bean" class="in.co.rays.proj4.bean.UserBean"
 			scope="request"></jsp:useBean>
@@ -81,7 +83,7 @@
 				<tr>
 					<th align="left">Date of Birth<span style="color: red">*</span></th>
 					<td><input type="text" id="udate" name="dob"
-					    placeholder="Select Date of Birth"
+						placeholder="Select Date of Birth"
 						value="<%=DataUtility.getDateString(bean.getDob())%>"></td>
 					<td style="position: fixed;"><font color="red"> <%=ServletUtility.getErrorMessage("dob", request)%></font></td>
 				</tr>

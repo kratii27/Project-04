@@ -20,6 +20,7 @@ F:\WorkSp\project04\ORSProject-04\src\main\java\in\co\rays\proj4\controller\ORSV
 F:\WorkSp\project04\ORSProject-04\src\main\java\in\co\rays\proj4\model\LibraryModel.java
 F:\WorkSp\project04\ORSProject-04\src\main\java\in\co\rays\proj4\util\JDBCDataSource.java
 F:\WorkSp\project04\ORSProject-04\src\main\java\in\co\rays\proj4\controller\UserListCtl.java
+F:\WorkSp\project04\ORSProject-04\src\main\java\in\co\rays\proj4\controller\HostelListCtl.java
 F:\WorkSp\project04\ORSProject-04\src\main\java\in\co\rays\proj4\bean\CourseBean.java
 F:\WorkSp\project04\ORSProject-04\src\main\java\in\co\rays\proj4\bean\RoleBean.java
 F:\WorkSp\project04\ORSProject-04\src\main\java\in\co\rays\proj4\controller\MarksheetMeritListCtl.java
@@ -66,5 +67,6 @@ F:\WorkSp\project04\ORSProject-04\src\main\java\in\co\rays\proj4\controller\Subj
 F:\WorkSp\project04\ORSProject-04\src\main\java\in\co\rays\proj4\model\SubjectModel.java
 F:\WorkSp\project04\ORSProject-04\src\main\java\in\co\rays\proj4\model\FacultyModel.java
 F:\WorkSp\project04\ORSProject-04\src\main\java\in\co\rays\proj4\bean\TimetableBean.java
+F:\WorkSp\project04\ORSProject-04\src\main\java\in\co\rays\proj4\controller\HostelCtl.java
 F:\WorkSp\project04\ORSProject-04\src\main\java\in\co\rays\proj4\model\StudentModel.java
 F:\WorkSp\project04\ORSProject-04\src\main\java\in\co\rays\proj4\controller\CollegeListCtl.java

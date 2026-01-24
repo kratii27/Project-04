@@ -55,8 +55,7 @@
 
 			<table style="width: 100%">
 				<tr>
-					<td align="center">
-					<label><b>First Name :</b></label> <input
+					<td align="center"><label><b>First Name :</b></label> <input
 						type="text" name="firstName" placeholder="Enter First Name"
 						value="<%=ServletUtility.getParameter("firstName", request)%>">&emsp;
 
@@ -64,8 +63,8 @@
 						placeholder="Enter Email ID"
 						value="<%=ServletUtility.getParameter("login", request)%>">&emsp;
 						
-						<label><b>DOB :</b></label> <input
-						type="text" id="udate" name="dob" placeholder="Enter date of birth"
+						<label><b>DOB:</b></label> <input type="date"  name="dob"
+						placeholder="Enter the DOB"
 						value="<%=ServletUtility.getParameter("dob", request)%>">&emsp;
 
 						<label><b>Role : </b></label> <%=HTMLUtility.getList("roleId", String.valueOf(bean.getRoleId()), roleList)%>&emsp;
@@ -159,5 +158,6 @@
 			%>
 		</form>
 	</div>
+	<%@ include file="Footer.jsp"%>
 </body>
 </html>

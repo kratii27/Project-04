@@ -52,7 +52,7 @@
 		if (user.getRoleId() == RoleBean.ADMIN) {
 	%>
 
-	<h3>
+	
 	<a href="<%=ORSView.USER_CTL%>"><b>Add User</b></a>
 	<b>|</b>
 	<a href="<%=ORSView.USER_LIST_CTL%>"><b>User List</b></a>
@@ -92,7 +92,11 @@
 	<a href="<%=ORSView.GET_MARKSHEET_CTL%>"><b> Get Marksheet</b></a>
 	<b>|</b>
 	<a href="<%=ORSView.TIMETABLE_LIST_CTL%>"><b>Timetable List</b></a>
+		<b>|</b>
+		<a href="<%=ORSView.HOSTEL_CTL%>"><b> Add hostel</b></a>
 	<b>|</b>
+	<a href="<%=ORSView.HOSTEL_LIST_CTL%>"><b>Hostel List</b></a>
+		<b>|</b>
 	<a href="<%=ORSView.MY_PROFILE_CTL%>"><b>My Profile</b></a>
 	<b>|</b>
 	<a href="<%=ORSView.CHANGE_PASSWORD_CTL%>"><b>change password</b></a>
@@ -100,13 +104,13 @@
 	<a href="<%=ORSView.JAVA_DOC%>" target="blank"><b>Java Doc</b></a>
 	<b>|</b>
 	<a href="<%=ORSView.LOGIN_CTL%>?operation=<%=LoginCtl.OP_LOG_OUT%>"><b>Logout</b></a>
-    </h3>
+    
 	<%
 		}
 	%>
 	
 	<% if(user.getRoleId() == RoleBean.KIOSK) { %>
-	<h3>
+	
 
 	<a href="<%=ORSView.FACULTY_CTL%>"><b>Add faculty</b></a>
 	<b>|</b>
@@ -145,14 +149,13 @@
 	<a href="<%=ORSView.CHANGE_PASSWORD_CTL%>"><b>change password</b></a>
 	<b>|</b>
 	<a href="<%=ORSView.LOGIN_CTL%>?operation=<%=LoginCtl.OP_LOG_OUT%>"><b>Logout</b></a>
-	</h3>
 	<%
 		}
 	%>
 	
 	
 	<% if(user.getRoleId() == RoleBean.FACULTY) { %>
-	<h3>
+	
 	<a href="<%=ORSView.SUBJECT_LIST_CTL%>"><b>Subject List</b></a>
 	<b>|</b>
 	<a href="<%=ORSView.MARKSHEET_CTL%>"><b>Add marksheet</b></a>
@@ -177,7 +180,7 @@
 	
 	
 	<% if(user.getRoleId() == RoleBean.STUDENT) { %>
-	<h3>
+	
 	<a href="<%=ORSView.MARKSHEET_LIST_CTL%>"><b>Marksheet List</b></a>
 	<b>|</b>
 	<a href="<%=ORSView.MARKSHEET_MERIT_LIST_CTL%>"><b>Marksheet Merit List</b></a>
@@ -191,7 +194,7 @@
 	<a href="<%=ORSView.CHANGE_PASSWORD_CTL%>"><b>change password</b></a>
 	<b>|</b>
 	<a href="<%=ORSView.LOGIN_CTL%>?operation=<%=LoginCtl.OP_LOG_OUT%>"><b>Logout</b></a>
-	</h3>
+	
 	<%
 		}
 	%>

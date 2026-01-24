@@ -1,6 +1,7 @@
 package in.co.rays.proj4.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -34,7 +35,7 @@ import in.co.rays.proj4.util.ServletUtility;
  */
 @WebServlet(name = "UserCtl", urlPatterns = { "/ctl/UserCtl" })
 public class UserCtl extends BaseCtl {
-	
+
 	private static Logger log = Logger.getLogger(UserCtl.class);
 
 	/**
@@ -49,7 +50,7 @@ public class UserCtl extends BaseCtl {
 			List<RoleBean> roleList = roleModel.list();
 			request.setAttribute("rolelist", roleList);
 		} catch (ApplicationException e) {
-			e.printStackTrace();
+			request.setAttribute("rolelist", new ArrayList<>());
 		}
 		log.debug("UserCtl Method preload ended");
 	}
@@ -59,9 +60,9 @@ public class UserCtl extends BaseCtl {
 	 */
 	@Override
 	protected boolean validate(HttpServletRequest request) {
-		
+
 		log.debug("UserCtl Method validate started");
-		 
+
 		boolean pass = true;
 
 		// First Name Validation
@@ -151,8 +152,7 @@ public class UserCtl extends BaseCtl {
 
 		log.debug("UserCtl Method validate ended");
 		return pass;
-		
-		
+
 	}
 
 	/**
@@ -160,9 +160,9 @@ public class UserCtl extends BaseCtl {
 	 */
 	@Override
 	protected BaseBean populateBean(HttpServletRequest request) {
-		
+
 		log.debug("UserCtl Method populate started");
-		
+
 		UserBean bean = new UserBean();
 
 		bean.setId(DataUtility.getLong(request.getParameter("id")));
@@ -187,7 +187,7 @@ public class UserCtl extends BaseCtl {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		log.debug("UserCtl Method doGet started");
 
 		long id = DataUtility.getLong(request.getParameter("id"));
@@ -199,7 +199,7 @@ public class UserCtl extends BaseCtl {
 				ServletUtility.setBean(bean, request);
 			} catch (ApplicationException e) {
 				e.printStackTrace();
-				ServletUtility.handleException(e, request, response);
+				ServletUtility.handleExceptionDB(getView(), request, response);
 				return;
 			}
 		}
@@ -213,7 +213,7 @@ public class UserCtl extends BaseCtl {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		log.debug("UserCtl Method doPost started");
 
 		String op = DataUtility.getString(request.getParameter("operation"));
@@ -231,7 +231,7 @@ public class UserCtl extends BaseCtl {
 				ServletUtility.setErrorMessage("Login Id already exists", request);
 			} catch (ApplicationException e) {
 				e.printStackTrace();
-				ServletUtility.handleException(e, request, response);
+				ServletUtility.handleExceptionDB(getView(), request, response);
 				return;
 			}
 
@@ -248,7 +248,7 @@ public class UserCtl extends BaseCtl {
 				ServletUtility.setErrorMessage("Login Id already exists", request);
 			} catch (ApplicationException e) {
 				e.printStackTrace();
-				ServletUtility.handleException(e, request, response);
+				ServletUtility.handleExceptionDB(getView(), request, response);
 				return;
 			}
 
