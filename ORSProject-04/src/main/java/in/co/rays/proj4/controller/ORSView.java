@@ -266,4 +266,14 @@ public interface ORSView {
     public String JAVA_DOC = APP_CONTEXT + "/doc/index.html";
     
     public String IMG_LOGO = "img/customLogo.jpg";
+    
+    /** Batch View JSP */
+    public String BATCH_VIEW = PAGE_FOLDER + "/BatchView.jsp";
+    /** Batch Controller URL */
+    public String BATCH_CTL = APP_CONTEXT + "/ctl/BatchCtl";
+    /** Batch List JSP */
+    public String BATCH_LIST_VIEW = PAGE_FOLDER + "/BatchListView.jsp";
+    public String BATCH_LIST_CTL = APP_CONTEXT + "/ctl/BatchListCtl";
+    
+   
 }

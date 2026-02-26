@@ -118,6 +118,7 @@ public class UserListCtl extends BaseCtl {
 		log.debug("UserListCtl Method doGet ended");
 	}
 
+	
 	/**
 	 * Handles POST request for operations: Search, Next, Previous, New, Delete,
 	 * Reset, Back.
