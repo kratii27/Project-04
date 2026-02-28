@@ -245,4 +245,18 @@ public class DataValidator {
     public static void main(String[] args) {
         // Tests included in original code
     }
+    
+ // General Code Validation (AB-101, NT-102, XY-999 ...)
+    public static boolean isCode(String val) {
+        String codeReg = "^[A-Z]{2}-\\d{3}$";
+        if (isNotNull(val)) {
+            try {
+                return val.matches(codeReg);
+            } catch (Exception e) {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
 }
