@@ -182,6 +182,19 @@ public class DataValidator {
             return false;
         }
     }
+    
+    public static boolean isNotificationCode(String val) {
+        String notificationReg = "^NT-\\d{3}$";
+        if (isNotNull(val)) {
+            try {
+                return val.matches(notificationReg);
+            } catch (Exception e) {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
 
     /**
      * Checks if phone number length is exactly 10 digits.

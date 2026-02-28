@@ -247,33 +247,27 @@ public interface ORSView {
     /** Department List Controller URL */
     public String DEPARTMENT_LIST_CTL = APP_CONTEXT + "/ctl/DepartmentListCtl";
 
-    // -----------------------------------------------------------
-    // Hostel Module
-    // -----------------------------------------------------------
-
-    /** Hostel View JSP */
-    public String HOSTEL_VIEW = PAGE_FOLDER + "/HostelView.jsp";
-
-    /** Hostel Controller URL */
-    public String HOSTEL_CTL = APP_CONTEXT + "/ctl/HostelCtl";
-
-    /** Hostel List JSP */
-    public String HOSTEL_LIST_VIEW = PAGE_FOLDER + "/HostelListView.jsp";
-
-    /** Hostel List Controller URL */
-    public String HOSTEL_LIST_CTL = APP_CONTEXT + "/ctl/HostelListCtl";
-    
+   
     public String JAVA_DOC = APP_CONTEXT + "/doc/index.html";
     
     public String IMG_LOGO = "img/customLogo.jpg";
     
-    /** Batch View JSP */
+    /** Usecases */
     public String BATCH_VIEW = PAGE_FOLDER + "/BatchView.jsp";
-    /** Batch Controller URL */
     public String BATCH_CTL = APP_CONTEXT + "/ctl/BatchCtl";
-    /** Batch List JSP */
     public String BATCH_LIST_VIEW = PAGE_FOLDER + "/BatchListView.jsp";
     public String BATCH_LIST_CTL = APP_CONTEXT + "/ctl/BatchListCtl";
+    
+    public String NOTIFICATION_VIEW = PAGE_FOLDER + "/NotificationView.jsp";
+    public String NOTIFICATION_CTL = APP_CONTEXT + "/ctl/NotificationCtl";
+    public String NOTIFICATION_LIST_VIEW = PAGE_FOLDER + "/NotificationListView.jsp";
+    public String NOTIFICATION_LIST_CTL = APP_CONTEXT + "/ctl/NotificationListCtl";
+    
+    public String HOSTEL_VIEW = PAGE_FOLDER + "/HostelView.jsp";
+    public String HOSTEL_CTL = APP_CONTEXT + "/ctl/HostelCtl";
+    public String HOSTEL_LIST_VIEW = PAGE_FOLDER + "/HostelListView.jsp";
+    public String HOSTEL_LIST_CTL = APP_CONTEXT + "/ctl/HostelListCtl";
+    
     
    
 }
