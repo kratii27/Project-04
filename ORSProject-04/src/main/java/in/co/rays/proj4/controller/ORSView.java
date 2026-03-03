@@ -268,6 +268,11 @@ public interface ORSView {
     public String HOSTEL_LIST_VIEW = PAGE_FOLDER + "/HostelListView.jsp";
     public String HOSTEL_LIST_CTL = APP_CONTEXT + "/ctl/HostelListCtl";
     
+    public String PORTFOLIO_VIEW = PAGE_FOLDER + "/PortfolioView.jsp";
+    public String PORTFOLIO_CTL = APP_CONTEXT + "/ctl/PortfolioCtl";
+    public String PORTFOLIO_LIST_VIEW = PAGE_FOLDER + "/PortfolioListView.jsp";
+    public String PORTFOLIO_LIST_CTL = APP_CONTEXT + "/ctl/PortfolioListCtl";
+    
     
    
 }
