@@ -110,6 +110,10 @@
 	<b>|</b>
 	<a href="<%=ORSView.PORTFOLIO_LIST_CTL%>"><b>Portfolio List</b></a>
 	<b>|</b>
+	<a href="<%=ORSView.TICKET_CATEGORY_CTL%>"><b> Add Catagory</b></a>
+	<b>|</b>
+	<a href="<%=ORSView.TICKET_CATEGORY_LIST_CTL%>"><b>Catagory List</b></a>
+	<b>|</b>
 	<a href="<%=ORSView.MY_PROFILE_CTL%>"><b>My Profile</b></a>
 	<b>|</b>
 	<a href="<%=ORSView.CHANGE_PASSWORD_CTL%>"><b>change password</b></a>

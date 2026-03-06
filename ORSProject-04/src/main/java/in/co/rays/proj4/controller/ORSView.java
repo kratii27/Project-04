@@ -273,6 +273,9 @@ public interface ORSView {
     public String PORTFOLIO_LIST_VIEW = PAGE_FOLDER + "/PortfolioListView.jsp";
     public String PORTFOLIO_LIST_CTL = APP_CONTEXT + "/ctl/PortfolioListCtl";
     
-    
+    public String TICKET_CATEGORY_VIEW = PAGE_FOLDER + "/TicketCategoryView.jsp";
+    public String TICKET_CATEGORY_CTL = APP_CONTEXT + "/ctl/TicketCategoryCtl";
+    public String TICKET_CATEGORY_LIST_VIEW = PAGE_FOLDER + "/TicketCategoryListView.jsp";
+    public String TICKET_CATEGORY_LIST_CTL = APP_CONTEXT + "/ctl/TicketCategoryListCtl";
    
 }
