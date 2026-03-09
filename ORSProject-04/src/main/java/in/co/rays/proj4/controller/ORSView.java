@@ -278,4 +278,8 @@ public interface ORSView {
     public String TICKET_CATEGORY_LIST_VIEW = PAGE_FOLDER + "/TicketCategoryListView.jsp";
     public String TICKET_CATEGORY_LIST_CTL = APP_CONTEXT + "/ctl/TicketCategoryListCtl";
    
+    public String MUSIC_PLAYLIST_VIEW = PAGE_FOLDER + "/MusicPlaylistView.jsp";
+    public String MUSIC_PLAYLIST_CTL = APP_CONTEXT + "/ctl/MusicPlaylistCtl";
+    public String MUSIC_PLAYLIST_LIST_VIEW = PAGE_FOLDER + "/MusicPlaylistListView.jsp";
+    public String MUSIC_PLAYLIST_LIST_CTL = APP_CONTEXT + "/ctl/MusicPlaylistListCtl";
 }
