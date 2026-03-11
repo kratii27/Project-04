@@ -118,6 +118,10 @@
 	<b>|</b>
 	<a href="<%=ORSView.MUSIC_PLAYLIST_LIST_CTL%>"><b>Music Playlist</b></a>
 	<b>|</b>
+	<a href="<%=ORSView.HOSTEL_ROOM_ALLOCATION_CTL%>"><b>Hostel Room Allocation</b></a>
+	<b>|</b>
+	<a href="<%=ORSView.HOSTEL_ROOM_ALLOCATION_LIST_CTL%>"><b>Hostel Room List</b></a>
+	<b>|</b>
 	<a href="<%=ORSView.MY_PROFILE_CTL%>"><b>My Profile</b></a>
 	<b>|</b>
 	<a href="<%=ORSView.CHANGE_PASSWORD_CTL%>"><b>change password</b></a>

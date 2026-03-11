@@ -282,4 +282,9 @@ public interface ORSView {
     public String MUSIC_PLAYLIST_CTL = APP_CONTEXT + "/ctl/MusicPlaylistCtl";
     public String MUSIC_PLAYLIST_LIST_VIEW = PAGE_FOLDER + "/MusicPlaylistListView.jsp";
     public String MUSIC_PLAYLIST_LIST_CTL = APP_CONTEXT + "/ctl/MusicPlaylistListCtl";
+    
+    public String HOSTEL_ROOM_ALLOCATION_VIEW = PAGE_FOLDER + "/HostelRoomAllocationView.jsp";
+    public String HOSTEL_ROOM_ALLOCATION_CTL = APP_CONTEXT + "/ctl/HostelRoomAllocationCtl";
+    public String HOSTEL_ROOM_ALLOCATION_LIST_VIEW = PAGE_FOLDER + "/HostelRoomAllocationListView.jsp";
+    public String HOSTEL_ROOM_ALLOCATION_LIST_CTL = APP_CONTEXT + "/ctl/HostelRoomAllocationListCtl";
 }
